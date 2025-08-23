@@ -1,0 +1,18 @@
+[
+  {
+    "name": "hosts",
+    "keys": ["-H", "--hosts"],
+    "description": "The –H/--hosts flag takes the value of the host to which requests will be sent.You can specify multiple addresses separated by commas without spaces.",
+    "type": "str",
+    "regex_pattern": "https?://[a-zA-Z0-9\\-]{1,63}(?:\\.[a-zA-Z0-9\\-]{1,63})+",
+    "required": true
+  },
+  {
+    "name": "count",
+    "keys": ["-C", "--count"],
+    "description": "The –C/--count flag specifies the number of requests that will be sent to each host (default is 1).",
+    "type": "int",
+    "default": 1,
+    "required": false
+  }
+]
