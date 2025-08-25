@@ -2,7 +2,7 @@ import argparse
 
 from constants.StringConstants import StringConstants
 from keys.BaseKeyWithRegexValidation import BaseKeyWithRegexValidation
-from utils.SplitUtil import SplitUtil
+from utils.StringUtil import SplitUtil
 from utils.TypeUtil import TypeUtil
 
 
