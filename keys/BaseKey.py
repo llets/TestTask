@@ -8,14 +8,12 @@ class BaseKey(ABC):
     type: str
     keys: list
     description: str
-    required: bool
 
     def __init__(self, config: dict):
         self.name = config['name']
         self.type = config['type']
         self.keys = config['keys']
         self.description = config['description']
-        self.required = config['required']
 
     @abstractmethod
     def add_to_parser(self, parser: argparse.ArgumentParser) -> None:
@@ -29,5 +27,4 @@ class BaseKey(ABC):
         return (f"{self.name} "
                 f"(keys: '{', '.join(self.keys)}', "
                 f"type: {self.type}, "
-                f"description: '{self.description}', "
-                f"required: {self.required})")
+                f"description: '{self.description}')")

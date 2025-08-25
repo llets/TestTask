@@ -5,7 +5,7 @@
     "description": "The –H/--hosts flag takes the value of the host to which requests will be sent.You can specify multiple addresses separated by commas without spaces.",
     "type": "str",
     "regex_pattern": "https?://[a-zA-Z0-9\\-]{1,63}(?:\\.[a-zA-Z0-9\\-]{1,63})+",
-    "required": true
+    "exclusive_with": ["file"]
   },
   {
     "name": "count",
@@ -14,5 +14,18 @@
     "type": "int",
     "default": 1,
     "required": false
+  },
+  {
+    "name": "file",
+    "keys": ["-F", "--file"],
+    "description": "The –F/--file flag contains the path to the file with the list of addresses divided into lines.",
+    "type": "str",
+    "exclusive_with": ["hosts"]
+  },
+  {
+    "name": "output",
+    "keys": ["-O", "--output"],
+    "description": "The –O/--output flag contains the path to the file where you want to save the output. If not specified, the output is sent to the console.",
+    "type": "str"
   }
 ]

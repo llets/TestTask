@@ -1,3 +1,4 @@
+import logging
 import time
 import httpx
 
@@ -12,7 +13,7 @@ class HttpUtil:
 
     @staticmethod
     def _test_url(url):
-
+        logging.debug(f"Testing {url}")
         response_info = ResponseInfo()
         response_info.url = url
         start_time = time.time()
@@ -26,20 +27,22 @@ class HttpUtil:
 
         except httpx.RequestError as e:
             response_info.error_message = f'Request error: {str(e)}'
+            logging.error(f'Request error: {str(e)}')
         except Exception as e:
             response_info.error_message = f'Unexpected error: {str(e)}'
+            logging.error(f'Unexpected error: {str(e)}')
 
         return response_info
 
     @staticmethod
     def _test_and_get_url_stat(url, requests_count):
-
+        logging.debug(f"Testing and getting statistics for {url}")
         host_statistics = HostStatistics()
         host_statistics.url = url
 
         for i in range(requests_count):
             response_info = HttpUtil._test_url(url)
-            print(f'Attempt {i+1}: ', response_info)
+            logging.info(f'Attempt {i+1}: {response_info}')
             host_statistics.response_time.append(response_info.response_time)
 
             if response_info.error_message:
@@ -53,13 +56,13 @@ class HttpUtil:
         return host_statistics
 
     @staticmethod
-    def test_server_availability(urls, requests_count) -> dict[str, HostStatistics]:
+    def test_server_availability(list_of_urls, requests_count) -> dict[str, HostStatistics]:
 
-        list_of_urls = StringUtil.split_string(urls, StringConstants.COMMA)
         full_statistics = {}
 
         for i, url in enumerate(list_of_urls):
-            print(f'Testing server availability for {url}')
+            logging.info("\n" + "=" * 50)
+            logging.info(f'TESTING SERVER AVAILABILITY FOR {url} \n')
             http_statistics = HttpUtil._test_and_get_url_stat(url, requests_count)
             full_statistics[url] = http_statistics
 

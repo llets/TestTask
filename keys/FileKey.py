@@ -5,22 +5,18 @@ from keys.BaseKey import BaseKey
 from utils.TypeUtil import TypeUtil
 
 
-class CountKey(BaseKey):
-
-    default: int
+class FileKey(BaseKey):
 
     def __init__(self, config: dict):
         super().__init__(config)
-        self.default = config['default']
 
     def add_to_parser(self, parser: argparse.ArgumentParser) -> None:
-        logging.debug("Adding Count key to parser")
+        logging.debug("Adding File key to parser")
         parser.add_argument(*self.keys,
                             help=self.description,
-                            type=TypeUtil.get_type(self.type),
-                            default=self.default)
+                            type=TypeUtil.get_type(self.type))
 
     def validate(self, value) -> bool:
-        logging.debug("Validating Count key value")
-        if isinstance(value, int):
+        logging.debug("Validating File key value")
+        if isinstance(value, str):
             return True
