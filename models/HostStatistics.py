@@ -12,19 +12,19 @@ class HostStatistics:
     response_time: List[float] = field(default_factory=list)
 
     @property
-    def total_count(self):
+    def total_count(self) -> int:
         return self.success_count + self.fail_count + self.error_count
 
     @property
-    def min_time(self):
+    def min_time(self) -> float:
         return min(self.response_time) if self.response_time else 0.0
 
     @property
-    def max_time(self):
+    def max_time(self) -> float:
         return max(self.response_time) if self.response_time else 0.0
 
     @property
-    def avg_time(self):
+    def avg_time(self) -> float:
         return mean(self.response_time) if self.response_time else 0.0
 
     def __str__(self):

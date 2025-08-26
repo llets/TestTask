@@ -1,5 +1,6 @@
 import json
 import logging
+from argparse import Namespace
 
 from exceptions.InvalidKeyValueException import InvalidKeyValueException
 from keys.BaseKey import BaseKey
@@ -35,7 +36,7 @@ class KeyLoader:
             raise e
 
     @staticmethod
-    def validate_parsed_args(parsed_args, loaded_keys) -> None:
+    def validate_parsed_args(parsed_args: Namespace, loaded_keys: [BaseKey]) -> None:
         logging.debug('Validating parsed args')
         all_valid = True
         message = ''

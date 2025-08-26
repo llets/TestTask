@@ -12,7 +12,7 @@ from utils.StringUtil import StringUtil
 class HttpUtil:
 
     @staticmethod
-    def _test_url(url):
+    def _test_url(url: str) -> ResponseInfo:
         logging.debug(f"Testing {url}")
         response_info = ResponseInfo()
         response_info.url = url
@@ -35,7 +35,7 @@ class HttpUtil:
         return response_info
 
     @staticmethod
-    def _test_and_get_url_stat(url, requests_count):
+    def _test_and_get_url_stat(url: str, requests_count: int) -> HostStatistics:
         logging.debug(f"Testing and getting statistics for {url}")
         host_statistics = HostStatistics()
         host_statistics.url = url
@@ -56,7 +56,7 @@ class HttpUtil:
         return host_statistics
 
     @staticmethod
-    def test_server_availability(list_of_urls, requests_count) -> dict[str, HostStatistics]:
+    def test_server_availability(list_of_urls : [str], requests_count: int) -> dict[str, HostStatistics]:
 
         full_statistics = {}
 

@@ -39,8 +39,8 @@ if __name__ == "__main__":
         statistics = HttpUtil.test_server_availability(list_of_urls, parsed_args.count)
 
     if parsed_args.output is None:
-        logging.info('Printing statistics')
+        logging.info('\nPrinting statistics')
         StatisticsUtil.print_results(statistics)
     else:
-        logging.info('Saving statistics into file')
+        logging.info('\nSaving statistics into file')
         FileUtil.save_into_file(parsed_args.output, StatisticsUtil.get_results(statistics))

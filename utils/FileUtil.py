@@ -6,7 +6,7 @@ from utils.PathUtil import PathUtil
 class FileUtil:
 
     @staticmethod
-    def get_file_info(file_name: str):
+    def get_file_info(file_name: str) -> str:
         logging.debug(f"Getting info from file {file_name}")
         file_path = PathUtil.get_resource_path(file_name)
         try:
@@ -21,7 +21,7 @@ class FileUtil:
             raise e
 
     @staticmethod
-    def save_into_file(file_name: str, content: str):
+    def save_into_file(file_name: str, content: str) -> None:
         logging.debug(f"Saving info into file {file_name}")
         file_path = PathUtil.get_resource_path(file_name)
         try:
